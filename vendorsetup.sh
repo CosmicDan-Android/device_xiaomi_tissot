@@ -23,3 +23,21 @@
 for var in eng user userdebug; do
   add_lunch_combo omni_tissot-$var
 done
+
+make_twrp_tissot() {
+	echo ""
+	echo "> export ALLOW_MISSING_DEPENDENCIES=true; lunch omni_tissot-eng"
+	export ALLOW_MISSING_DEPENDENCIES=true; lunch omni_tissot-eng
+	echo "> mka recoveryimage $@"
+    mka recoveryimage "$@"
+	echo ""
+	# TODO: rename recovery.img?
+	echo ""
+	echo "[i] All done!"
+}
+
+echo ""
+echo "~~~~~~~~~~~~"
+echo "[i] To build TWRP + Tissot Manager (Treble support, dualboot, etc), run \`make_twrp_tissot [-j#]\`."
+echo "~~~~~~~~~~~~"
+echo ""
